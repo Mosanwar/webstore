@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity(name = "OFFER")
-public class Offer{
+public class Offer {
 
 	@Id
 	@Column(name = "ID")
@@ -19,6 +19,8 @@ public class Offer{
 	private long id;
 	@Column(name = "PRICE")
 	private Double price;
+	@Column(name = "DESCRIPTION")
+	private String description;
 
 	@ManyToOne
 	@JoinColumn(name = "POST_ID")
@@ -27,10 +29,9 @@ public class Offer{
 
 	@ManyToOne
 	@JoinColumn(name = "USER_ID")
-	@JsonIgnoreProperties(value = { "offers","products", "makeReports","hasReports" })
+	@JsonIgnoreProperties(value = { "offers", "products", "makeReports", "hasReports" })
 	private User user;
 
-	
 	public long getId() {
 		return id;
 	}
@@ -39,13 +40,20 @@ public class Offer{
 		this.id = id;
 	}
 
-
 	public Double getPrice() {
 		return price;
 	}
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Product getProduct() {

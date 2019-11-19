@@ -20,6 +20,11 @@
 	<bean id= "messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
    		<property name="basename" value="messages"/> 
 	</bean>
+	
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en"/>
+	</bean>
+	
 <!--	<bean id="messageSource"
 		  class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basenames" value="classpath:messages,classpath:errorMessages" />
@@ -27,11 +32,14 @@
 	
 	<mvc:resources  location="/resources/"  mapping="/resource/**"/>
 
-<!-- 	<mvc:interceptors> -->
+	<mvc:interceptors>
+	<bean class= "org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="language"/>
+	 	</bean>
 <!-- 		<mvc:interceptor> -->
 <!-- 			<mvc:mapping path="/**"/> -->
 <!-- 			<bean class="mum.edu.interceptor.VolunteerInterceptor" /> -->
 <!-- 		</mvc:interceptor> -->
-<!-- 	</mvc:interceptors> -->
+	</mvc:interceptors>
  
  </beans>

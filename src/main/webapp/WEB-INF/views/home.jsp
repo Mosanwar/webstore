@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<title>Welcome</title>
+<title>E-Market</title>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -18,6 +18,7 @@
 			<li><a href="#">Add Product</a></li>
 			<li><a href="#">Chart</a></li>
 			<li><a href="#">Admin</a></li>
+			<li><a href="offers">Offers</a></li>
 			<li><a style="margin-left: 700px" href="#">Login</a></li>
 		</ul>
 	</div>
