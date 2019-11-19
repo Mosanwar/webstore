@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity(name = "POST")
+@Entity(name = "PRODUCT")
 public class Product {
 
 	@Id
