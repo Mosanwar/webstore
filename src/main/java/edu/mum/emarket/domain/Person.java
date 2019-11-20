@@ -9,10 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
 
-@Entity(name = "PERSON")
+@Entity
+@Table(name = "PERSON")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Person {
 

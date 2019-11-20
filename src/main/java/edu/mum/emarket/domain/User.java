@@ -7,14 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity(name = "USER")
+@Entity
+@Table(name = "USER")
 @PrimaryKeyJoinColumn(name = "ID")
 public class User extends Person {
 
-	private static final long serialVersionUID = 1L;
 
 	@Column(name = "BLOCKED")
 	private Boolean blocked = false;
@@ -45,6 +46,7 @@ public class User extends Person {
 	private Set<Order> orders;
 
 	public User() {
+		
 	}
 
 	public User(long id, String name, String email, String password, String phone, String address, Boolean blocked,
