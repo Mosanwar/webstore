@@ -1,11 +1,10 @@
 package edu.mum.emarket.repository;
 
-import edu.mum.emarket.domain.User;
+import edu.mum.emarket.domain.Admin;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
-
-    User findByEmail(String email);
+public interface AdminRepository extends CrudRepository<Admin, Long> {
+    Admin findByEmail(String email);
 }
