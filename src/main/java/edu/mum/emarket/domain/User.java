@@ -1,5 +1,6 @@
 package edu.mum.emarket.domain;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -14,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "USER")
 @PrimaryKeyJoinColumn(name = "ID")
-public class User extends Person {
+public class User extends Person implements Serializable {
 
 
 	@Column(name = "BLOCKED")

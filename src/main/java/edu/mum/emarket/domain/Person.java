@@ -1,6 +1,5 @@
 package edu.mum.emarket.domain;
 
-import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "PERSON")
@@ -24,16 +25,23 @@ public class Person {
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+
 	@Column(name = "NAME")
+	@NotEmpty
 	private String name;
 
 	@Email(message = "please enter valid email")
 	@Column(name = "EMAIL", nullable = false, unique = true)
+	@NotEmpty
 	private String email;
+
 	@Column(name = "PASSWORD", nullable = false)
+	@NotEmpty @Size(min = 6, max = 20)
 	private String password;
+
 	@Column(name = "PHONR")
 	private String phone;
+	
 	@Column(name = "ADDRESS")
 	private String address;
 
