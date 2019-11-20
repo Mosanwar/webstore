@@ -29,6 +29,7 @@
 
         <security:logout logout-success-url="/logout"
                          delete-cookies="JSESSIONID"/>
+        <security:csrf disabled="true" />
 
     </security:http>
 
