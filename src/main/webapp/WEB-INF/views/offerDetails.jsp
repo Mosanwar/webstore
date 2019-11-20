@@ -9,9 +9,10 @@
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<title>Offers</title>
+<title>Insert title here</title>
 </head>
 <body>
+
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -39,49 +40,29 @@
 		</div>
 	</nav>
 
-	<section>
-		<div class="jumbotron">
-			<div class="container">
-				<h1>
-					<spring:message code="offer.offers" />
-				</h1>
+
+	<section class="container">
+
+		<div class="row">
+			<div class="col-md-5">
+				<img
+					src="<c:url value="/resource/images/${offer.product.id}.png"></c:url>"
+					alt="image" style="width: 100%" />
+			</div>
+
+			<div class="col-md-5">
+				<h3>${offer.product.title}</h3>
+				<p><strong><spring:message code="offer.form.description"/>: </strong> ${offer.description}</p>
+				<p><strong><spring:message code="offer.form.newPrice"/>: </strong> ${offer.price} $</p>
+				<p><strong><spring:message code="offer.form.oldPrice"/>: </strong> ${offer.product.price} $</p>
+
+				<p>
+					<strong><spring:message code="offer.form.category"/>: </strong> ${offer.product.category.name}
+				</p>
+
 			</div>
 		</div>
 	</section>
 
-	<section class="container">
-		<div class="row">
-			<c:forEach items="${offers}" var="offer">
-				<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
-					<div class="thumbnail">
-						<img
-							src="<c:url value="/resource/images/${offer.product.id}.png"></c:url>"
-							alt="image" style="width: 100%" />
-						<div class="caption">
-							<h3>${offer.price}</h3>
-							<p>
-								<spring:message code="offer.form.description" />
-								: ${offer.description}
-							</p>
-							<p>
-								<spring:message code="offer.form.newPrice" />
-								: ${offer.price} $
-							</p>
-							<p>
-								<spring:message code="offer.form.oldPrice" />
-								: ${offer.product.price} $
-							</p>
-							<p>
-								<a href=" <spring:url value="/offer?id=${offer.id}" /> "
-									class="btn btn-link">  <spring:message code="offer.details"/>
-								</a>
-							</p>
-
-						</div>
-					</div>
-				</div>
-			</c:forEach>
-		</div>
-	</section>
 </body>
 </html>

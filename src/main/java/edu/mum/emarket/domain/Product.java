@@ -13,10 +13,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity(name = "PRODUCT")
+@Entity
+@Table(name = "PRODUCT")
 public class Product {
 
 	@Id
@@ -135,6 +137,14 @@ public class Product {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 }

@@ -7,10 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity(name = "USER")
+@Entity
+@Table(name = "USER")
 @PrimaryKeyJoinColumn(name = "ID")
 public class User extends Person {
 
