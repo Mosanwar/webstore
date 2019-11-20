@@ -10,6 +10,10 @@
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <title>Add Offer</title>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript"
+	src="<spring:url value="/resource/js/offer.js"/>"></script>
 </head>
 <body>
 
@@ -31,58 +35,67 @@
 	</nav>
 
 	<nav class="navbar navbar-light bg-light">
-		<a class="navbar-brand" href="offers">Offers</a> <a
-			class="navbar-brand" href="addOffer">Add Offer</a>
+		<a class="navbar-brand" href="offers"><spring:message
+				code="offer.offers" /></a> <a class="navbar-brand" href="addOffer"><spring:message
+				code="offer.addOffer" /></a>
+
+		<div class="pull-right" style="padding: 15px 70px; font-size: 18px;">
+			<a href="?language=en">English</a> | <a href="?language=fr">French</a>
+		</div>
 	</nav>
 
 
-	<section>
-		<div class="jumbotron">
-			<div class="container">
-				<h1>
-					<spring:message code="offer.addOffer" />
-				</h1>
-			</div>
-			<div class="pull-right" style="padding-right: 50px">
-				<a href="?language=en">English</a>|<a href="?language=fr">French</a>
-			</div>
-
+	<div class="jumbotron">
+		<div class="container">
+			<h1>
+				<spring:message code="offer.addOffer" />
+			</h1>
 		</div>
-	</section>
-	<section class="container">
-		<form:form modelAttribute="offer" class="form-horizontal"
-			enctype="multipart/form-data">
-			<fieldset>
-				<legend><spring:message code="offer.addNewOffer"></spring:message></legend>
-	
-				<form:errors path="*" cssClass="alert alert-danger" element="div" />
-				<div class="form-group">
+
+	</div>
+
+	<div class="container">
+		<form:form modelAttribute="offer" id="offerForm">
+			<div class="form-row">
+				<legend style="color: #428bca">
+					<spring:message code="offer.addNewOffer"></spring:message>
+				</legend>
+				<div>
+					<form:errors path="*" cssClass="alert alert-danger" element="div" />
+				</div>
+				<div class="form-group row">
 					<label class="control-label col-lg-2 col-lg-2" for="productId"><spring:message
 							code="offer.form.description" /></label>
 					<div class="col-lg-10">
 						<form:input id="description" path="description" type="text"
-							class="form:input-large" />
+							class="form-control" />
 						<form:errors path="description" cssClass="text-danger" />
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group row">
 					<label class="control-label col-lg-2" for="price"><spring:message
 							code="offer.form.price" /></label>
 					<div class="col-lg-10">
 						<form:input id="price" path="price" type="text"
-							class="form:input-large" />
+							class="form-control" />
 						<form:errors path="price" cssClass="text-danger" />
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group row">
 					<label class="control-label col-lg-2" for="product"><spring:message
 							code="offer.form.product" /></label>
 					<div class="col-lg-10">
 						<div class="form:input-prepend">
-							<form:input id="product" path="product" type="text"
-								class="form:input-large" />
+							<form:select id="product" path="product" type="text"
+								class="form-control">
+								<form:option value="null">
+									<spring:message code="offer.form.selectProduct" />
+								</form:option>
+								<form:options items="${products}" itemValue="id"
+									itemLabel="title" />
+							</form:select>
 							<form:errors path="product" cssClass="text-danger" />
 						</div>
 					</div>
@@ -92,13 +105,16 @@
 
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
-						<input type="submit" id="btnAdd" class="btn btn-primary"
-							value="Add" />
+						<input onclick="addOffer()" id="btnAdd" class="btn btn-primary"
+							value="<spring:message code="offer.form.save"/>" />
 					</div>
 				</div>
 
-			</fieldset>
+			</div>
 		</form:form>
-	</section>
+		<div id="result"
+			style="display: none; border: medium; background: #bce8f1;"></div>
+	</div>
+
 </body>
 </html>

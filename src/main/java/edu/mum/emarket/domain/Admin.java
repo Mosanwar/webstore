@@ -3,9 +3,11 @@ package edu.mum.emarket.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 
-@Entity(name = "ADMIN")
+@Entity
+@Table(name = "ADMIN")
 @PrimaryKeyJoinColumn(name = "ID")
 public class Admin extends Person {
 

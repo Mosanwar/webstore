@@ -1,6 +1,5 @@
 package edu.mum.emarket.domain;
 
-import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -59,6 +60,7 @@ public class Product implements Serializable {
 	private String city;
 	@Column(name = "COUNTRY")
 	private String country;
+
 	@ManyToOne
 	@JoinColumn(name = "CATEGORY_ID")
 	private Category category;
