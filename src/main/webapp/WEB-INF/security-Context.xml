@@ -18,6 +18,7 @@
     <security:http use-expressions="true">
 
         <security:intercept-url pattern="/emp" access="hasRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/emp1" access="hasRole('ROLE_ADMIN')"/>
 
         <security:form-login
                 login-page="/login"
@@ -38,9 +39,9 @@
             <security:password-encoder ref="passwordEncoder"/>
             <security:jdbc-user-service
                     data-source-ref="dataSource"
-                    users-by-username-query="select * from person p where p.email=?"
-                    authorities-by-username-query="select u1.email, u2.authority from person u1, authority u2
-				                                                     where u1.email = u2.email and u1.email =?"/>
+                    users-by-username-query="select username,password,enabled from credentials where username=?"
+                    authorities-by-username-query="select u1.username, u2.authority from credentials u1, authority u2
+				                                                     where u1.username = u2.EMAIL and u1.username =?"/>
         </security:authentication-provider>
     </security:authentication-manager>
 

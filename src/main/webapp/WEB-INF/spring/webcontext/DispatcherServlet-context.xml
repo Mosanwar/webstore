@@ -30,7 +30,7 @@
 		<property name="basenames" value="classpath:messages,classpath:errorMessages" />
 	</bean>-->
 	
-	<mvc:resources  location="/resources/"  mapping="/resource/**"/>
+	<mvc:resources  location="/resources/"  mapping="/resources/**"/>
 
 	<mvc:interceptors>
 	<bean class= "org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
