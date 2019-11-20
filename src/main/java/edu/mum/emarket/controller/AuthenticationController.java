@@ -36,7 +36,7 @@ public class AuthenticationController {
         return "redirect:/";
     }
 
-    @RequestMapping("/emp")
+    @RequestMapping("/emp") 
     public String emp(){
         SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return "/home";
