@@ -1,5 +1,6 @@
 package edu.mum.emarket.domain;
 
+import javax.persistence.Transient;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -13,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -30,6 +33,14 @@ public class Product {
 	private String description;
 	@Column(name = "PRICE")
 	private Double price;
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
 	@Column(name = "CITY")
 	private String city;
 	@Column(name = "COUNTRY")
@@ -51,6 +62,15 @@ public class Product {
 	@OneToMany(fetch = FetchType.EAGER, targetEntity = Photo.class, mappedBy = "product", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties(value = { "product" })
 	private Set<Photo> photos;
+
+	@Transient
+	private MultipartFile productImage;
+	
+	
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
 
 	public Product() {
 	}
@@ -135,6 +155,11 @@ public class Product {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public MultipartFile getProductImage() {
+		// TODO Auto-generated method stub
+		return productImage;
 	}
 
 }

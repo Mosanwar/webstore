@@ -15,7 +15,7 @@
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="#">Home</a></li>
 			<li><a href="#">Profile</a></li>
-			<li><a href="#">Add Product</a></li>
+			<li><a href="addProduct">Add Product</a></li>
 			<li><a href="#">Chart</a></li>
 			<li><a href="#">Admin</a></li>
 			<li><a href="offers">Offers</a></li>

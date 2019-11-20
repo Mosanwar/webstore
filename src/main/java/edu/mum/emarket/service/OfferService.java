@@ -11,4 +11,6 @@ public interface OfferService {
 	Offer getOfferById(long id);
 
 	Offer addOffer(Offer offer);
+	
+	
 }
