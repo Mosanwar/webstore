@@ -1,10 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<title>E-Market</title>
+<title>Welcome</title>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -13,12 +14,11 @@
 			<a class="navbar-brand" href="#">Rangers Webstore</a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="#">Home</a></li>
+			<li class="active"><a href="<spring:url value="/" />">Home</a></li>
 			<li><a href="#">Profile</a></li>
 			<li><a href="#">Add Product</a></li>
-			<li><a href="#">Chart</a></li>
+			<li><a href="<spring:url value="/product" />">Chart</a></li>
 			<li><a href="#">Admin</a></li>
-			<li><a href="offers">Offers</a></li>
 			<li><a style="margin-left: 700px" href="#">Login</a></li>
 		</ul>
 	</div>

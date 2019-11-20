@@ -1,5 +1,6 @@
 package edu.mum.emarket.domain;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -12,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity(name = "USER")
 @PrimaryKeyJoinColumn(name = "ID")
-public class User extends Person {
+public class User extends Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
