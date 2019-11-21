@@ -47,4 +47,10 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.save(p);
 	}
 
+	@Override
+	public Product getProductByProductId(String productID) {
+		// TODO Auto-generated method stub
+		return productRepository.getProductByProductId(productID);
+	}
+
 }
