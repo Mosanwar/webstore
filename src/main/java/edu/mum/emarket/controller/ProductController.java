@@ -1,6 +1,7 @@
 package edu.mum.emarket.controller;
 
 import java.io.File;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,15 +41,16 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = { "/addProduct" }, method = RequestMethod.POST)
-	public String postProduct(Product product, BindingResult result,
-			HttpServletRequest request) {
-		
+	public String postProduct(@ModelAttribute("product") Product product, BindingResult result, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+
 		MultipartFile productImage = product.getProductImage();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 
 		if (productImage != null && !productImage.isEmpty()) {
 			try {
-				String path = rootDirectory + "resources\\images\\" + product.getId() + ".png";
+				java.util.Date date = new java.util.Date();
+				int i = (int) (date.getTime() / 1000);
+				String path = rootDirectory + "resources\\images\\" + i + ".png";
 				productImage.transferTo(new File(path));
 				Photo photo = new Photo();
 				photo.setUrl(path);
@@ -60,7 +62,8 @@ public class ProductController {
 			}
 		}
 		productService.addProduct(product);
-		return "redirect:/";
+		redirectAttributes.addFlashAttribute("product", product);
+		return "redirect:/product";
 	}
 
 	@RequestMapping(value = { "/product" }, method = RequestMethod.GET)

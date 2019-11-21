@@ -43,12 +43,10 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/rangers?useSSL=false" />
 		<property name="username" value="root" />
-<<<<<<< HEAD
+
 		<property name="password" value="1234" />
 
-=======
-		<property name="password" value="root" />
->>>>>>> a2235d41531864776c12a6c2830b06d02656b977
+
 	</bean>
 
  
