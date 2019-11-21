@@ -11,10 +11,21 @@ public interface ProductService {
 
 	List<Product> getAllProducts();
 
-	Product getProductById(String productID);
+	Product getProductById(long productID);
+	
+	Product getProductByProductId(String productID);
 
 	List<Product> getProductsByCategory(String category);
 
 
-	void addProduct(Product product);
+	Product addProduct(Product product);
+	
+	Product editProduct(Product p);
+	
+	
+
+	Product getProductById(String productID);
+
+
+
 }

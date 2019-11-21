@@ -5,10 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet"	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
- 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-	<script type="text/javascript" src="<spring:url value="/resource/js/cart.js"/>"></script>
-	
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript"
+	src="<spring:url value="/resource/js/cart.js"/>"></script>
+
 <title>Products</title>
 </head>
 <body>
@@ -44,31 +47,30 @@
  	<section class="container" >
 	
 		<div class="row">
-		<div class="col-md-5">
-	<img src="<c:url value="/resource/images/${product.productId}.png"></c:url>" alt="image"  style = "width:100%"/>
-        </div>
-		
 			<div class="col-md-5">
-				<h3>${product.title}</h3>
+
+				<img
+					src="<c:url value="/resource/images/${product.productId}.png"></c:url>"
+					alt="image" style="width: 100%" />
+			</div>
+
+			<div class="col-md-5">
+				<h3>${product.productTitle}</h3>
 				<p>${product.description}</p>
+
 				<p>
-					<strong>Item Code : </strong><span class="label label-warning">${product.productId}</span>
-				</p>
-				<p>
+
 					<strong>category</strong> : ${product.category}
 				</p>
-				<p>
-					<strong>City</strong> : ${product.city}
-				</p>
-				<h4>${product.price} USD</h4>
-				<p  >
- 					<a href="#" class="btn btn-warning btn-large" onclick="addToCart('${product.productId}')">
-<span class="glyphicon-shopping-cart glyphicon"></span> Order Now </a>
-<a href="<spring:url value="/cart" />" class="btn btn-default">
-	<span class="glyphicon-hand-right glyphicon"></span> View Cart
-</a>
 
- <a href="<spring:url value="/products" />" class="btn btn-default">
+				<h4>${product.price}USD</h4>
+				<p>
+					<a href="#" class="btn btn-warning btn-large"
+						onclick="addToCart('${product.productId}')"> <span
+						class="glyphicon-shopping-cart glyphicon"></span> Order Now
+					</a> <a href="<spring:url value="/cart" />" class="btn btn-default">
+						<span class="glyphicon-hand-right glyphicon"></span> View Cart
+					</a> <a href="<spring:url value="/products" />" class="btn btn-default">
 						<span class="glyphicon-hand-left glyphicon"></span> back
 					</a>
 
@@ -76,7 +78,7 @@
 
 			</div>
 		</div>
-<!--/div-->
+		<!--/div-->
 	</section>
 </body>
 </html>

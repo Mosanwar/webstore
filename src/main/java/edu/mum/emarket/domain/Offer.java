@@ -31,7 +31,7 @@ public class Offer {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@NotNull(message = "NotNull")
+//	@NotNull(message = "NotNull")
 	@ManyToOne
 	@JoinColumn(name = "PRODUCT_ID")
 	@JsonIgnoreProperties(value = { "offers" })

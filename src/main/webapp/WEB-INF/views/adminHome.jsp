@@ -11,7 +11,11 @@
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+  	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="<spring:url value="/resources/js/adminHome.js"/>"></script>
 <title>Admin</title>
+
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -45,16 +49,23 @@
 </nav>
 
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="admin">Admin Home</a>
-  <a class="navbar-brand" href="reportedUsers">Reported Users</a>
-  <a class="navbar-brand" href="manageUsers">Manage Users</a>
+  <a class="navbar-brand" href="admin"><spring:message code="admin.home.AdminHome" /></a>
+  <a class="navbar-brand" href="reportedUsers"><spring:message code="admin.home.ReportedUsers" /></a>
+  <a class="navbar-brand" href="manageUsers"><spring:message code="admin.home.ManageUsers" /></a>
+
+  		<div class="pull-right" style="padding: 15px 70px; font-size: 18px;">
+			<a href="?language=en">English</a> | <a href="?language=fr">French</a>
+		</div>
 </nav>
+
+
 
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Admin Home</h1>
-			<p>Welcome Admin !! ${user.userName}</p>
+				<h1><spring:message code="admin.home.AdminHome" /></h1>
+			<p><spring:message code="admin.home.WelcomeAdmin" /> ${user.name}</p>
+
 			</div>
 		</div>
 	</section>
@@ -67,8 +78,8 @@
 				<div class="col-md-6"  >
 					<div class="thumbnail">
 					
-						<div class="caption">
-							<h3>Number of All Products </h3>
+						<div class="caption" id="products">
+							<h3><spring:message code="admin.home.NumberofAllProducts" /> </h3>
 							<h4>${NoAllProducts}</h4> 
 							
 
@@ -80,7 +91,7 @@
 					<div class="thumbnail">
 					
 						<div class="caption">
-							<h3>Number of Registered Users </h3>
+							<h3><spring:message code="admin.home.NumberofRegisteredUsers" /></h3>
 							<h4>${NoAllUsers}</h4>
 							
 
@@ -92,7 +103,7 @@
 					<div class="thumbnail">
 					
 						<div class="caption">
-							<h3>Number of Blocked Users </h3>
+							<h3><spring:message code="admin.home.NumberofBlockedUsers" /> </h3>
 							<h4>${NoBlockedUsers}</h4>
 							
 
@@ -104,13 +115,16 @@
 					<div class="thumbnail">
 					
 						<div class="caption">
-							<h3>Number of Reported Users </h3>
+							<h3><spring:message code="admin.home.NumberofReportedUsers" /> </h3>
 							<h4>${NoReportedUsers}</h4>
 							
 
 						</div>
 					</div>
-				</div>								
+				</div>
+				<div id="result" style="margin: 5px">
+
+				</div>
 			
 		</div>
 	</section>

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 	 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 	 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
@@ -44,15 +45,19 @@
 </nav>
 
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="admin">Admin Home</a>
-  <a class="navbar-brand" href="reportedUsers">Reported Users</a>
-  <a class="navbar-brand" href="manageUsers">Manage Users</a>
+  <a class="navbar-brand" href="admin"><spring:message code="admin.home.AdminHome" /></a>
+  <a class="navbar-brand" href="reportedUsers"><spring:message code="admin.home.ReportedUsers" /></a>
+  <a class="navbar-brand" href="manageUsers"><spring:message code="admin.home.ManageUsers" /></a>
+
+  		<div class="pull-right" style="padding: 15px 70px; font-size: 18px;">
+			<a href="?language=en">English</a> | <a href="?language=fr">French</a>
+		</div>
 </nav>
 
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>View Reported Users</h1>
+				<h1><spring:message code="admin.reportedUser.ViewReportedUsers" /></h1>
 			</div>
 		</div>
 	</section>
@@ -64,23 +69,23 @@
 					<div class="thumbnail">
 						<div class="caption">
 							<h3>${user.name}</h3>
-							<h5>Report Description</h5>
+							<h5><spring:message code="admin.reportedUser.ReportDescription" /></h5>
 						
 						   <c:forEach items="${user.hasReports}" var="report">
-							<p>tst ${report.description}</p>
+							<p>- ${report.description}</p>
 							</c:forEach>       
 							
 							<p>
 								<a style="background-color:red"
 									href="<spring:url value="/blockUser?id=${user.id}" /> "
 									class="btn btn-primary"> <span
-									class="glyphicon-info-sign glyphicon" /></span> Block
+									class="glyphicon-info-sign glyphicon" /></span> <spring:message code="admin.reportedUser.Block" />
 								</a>
 								
 								<a 
 									href=" <spring:url value="/ignoreUser?id=${user.id}" /> "
 									class="btn btn-primary"> <span
-									class="glyphicon-info-sign glyphicon" /></span> Ignore
+									class="glyphicon-info-sign glyphicon" /></span> <spring:message code="admin.reportedUser.Ignore" />
 								</a>
 							</p>
 
