@@ -9,21 +9,23 @@ import org.springframework.stereotype.Service;
 
 import edu.mum.emarket.domain.Product;
 import edu.mum.emarket.repository.ProductRepository;
-import edu.mum.emarket.service.productService;
+import edu.mum.emarket.service.ProductService;
+
 @Transactional
 @Service
-public class ProductServiceImpl implements productService {
+public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private ProductRepository productRepository;
+
 	@Override
-	public Product addProduct(Product p) {
+	public Product addProduct(Product product) {
 		// TODO Auto-generated method stub
-		return productRepository.save(p);
+		return productRepository.save(product);
 	}
 
 	@Override
-	public List<Product> getProducts() {
+	public List<Product> getAllProducts() {
 		// TODO Auto-generated method stub
 		return (List<Product>) productRepository.findAll();
 	}
@@ -35,9 +37,14 @@ public class ProductServiceImpl implements productService {
 	}
 
 	@Override
+	public List<Product> getProductsByCategory(String category) {
+		return productRepository.getProductsByCategory(category);
+	}
+
+	@Override
 	public Product editProduct(Product p) {
 		// TODO Auto-generated method stub
 		return productRepository.save(p);
 	}
-	
+
 }

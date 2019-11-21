@@ -23,13 +23,13 @@ import edu.mum.emarket.domain.Photo;
 import edu.mum.emarket.domain.Product;
 import edu.mum.emarket.repository.CategoryRepository;
 import edu.mum.emarket.service.CategoryService;
-import edu.mum.emarket.service.productService;
+import edu.mum.emarket.service.ProductService;
 
 @Controller
 public class ProductController {
 
 	@Autowired
-	productService productService;
+	ProductService productService;
 	@Autowired
 	CategoryService categoryService;
 
@@ -40,7 +40,7 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = { "/addProduct" }, method = RequestMethod.POST)
-	public String postProduct(@Valid @ModelAttribute("product") Product product, BindingResult result,
+	public String postProduct(Product product, BindingResult result,
 			HttpServletRequest request) {
 		
 		MultipartFile productImage = product.getProductImage();
@@ -69,7 +69,7 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = { "/editProduct" }, method = RequestMethod.GET)
-	public String editproduct(@RequestParam("id") int id, Model model) {
+	public String editproduct(@RequestParam("id") Long id, Model model) {
 		Product product = productService.getProductById(id);
 		model.addAttribute("product", product);
 		return "editProduct";

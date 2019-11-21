@@ -1,25 +1,70 @@
 package edu.mum.emarket.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 
-@Entity(name = "BIDDING")
-public class Order {
+@Entity(name = "ORDERK")
+public class Order implements Serializable{
 
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	
+	private Long id;
+
+	private Long orderId;
+
+	public Long getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
+	}
+
+	@OneToOne
+	private ShippingDetail shippingDetail;
+
+
+	public ShippingDetail getShippingDetail() {
+		return shippingDetail;
+	}
+
+	public void setShippingDetail(ShippingDetail shippingDetail) {
+		this.shippingDetail = shippingDetail;
+	}
+
+
+	@OneToOne
+	private Cart cart;
+
+	public Order() {
+		this.customer = new User();
+		this.shippingDetail = new ShippingDetail();
+	}
+
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	private User customer;
+
+	public User getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(User customer) {
+		this.customer = customer;
+	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
 	private String address;
 	
 	private LocalDate createdDate;
@@ -29,11 +74,11 @@ public class Order {
 	@OneToMany(fetch = FetchType.LAZY, targetEntity = Product.class)
 	private Set<Product> cartProducts;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

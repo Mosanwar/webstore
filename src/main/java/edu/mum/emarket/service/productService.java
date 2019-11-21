@@ -1,20 +1,22 @@
 package edu.mum.emarket.service;
 
-import java.util.List;
-
-import javax.transaction.Transactional;
-
-import org.springframework.stereotype.Service;
 
 import edu.mum.emarket.domain.Product;
 
-public interface productService {
-	
-	Product addProduct(Product p);
-	
-	List<Product> getProducts();
-	
-	Product getProductById(long id);
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public interface ProductService {
+
+	List<Product> getAllProducts();
+
+	Product getProductById(long productID);
+
+	List<Product> getProductsByCategory(String category);
+
+
+	Product addProduct(Product product);
 	
 	Product editProduct(Product p);
 }
