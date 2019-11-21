@@ -50,16 +50,16 @@ public class Cart implements Serializable{
 	}
 	
 	public void addCartItem(CartItem item) {
-		String productId = item.getProduct().getProductId();
+		Long productId = item.getProduct().getId();
 		Long  itemId =   (long) (Math.random() * 10000);
 		if(cartItems.containsKey(productId)) {
 			CartItem existingCartItem = cartItems.get(productId);
 			existingCartItem.setQuantity(existingCartItem.getQuantity()+ item.getQuantity());
 			existingCartItem.setCartItemId(itemId);
-			cartItems.put(productId, existingCartItem);
+			cartItems.put(productId+"", existingCartItem);
 		} else {
 			item.setCartItemId(itemId);
-			cartItems.put(productId, item);
+			cartItems.put(productId+"", item);
 		}
 
 		updateGrandTotal();

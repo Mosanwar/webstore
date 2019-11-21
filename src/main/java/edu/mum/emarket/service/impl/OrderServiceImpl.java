@@ -7,6 +7,7 @@ import edu.mum.emarket.domain.User;
 import edu.mum.emarket.repository.*;
 import edu.mum.emarket.service.CartService;
 import edu.mum.emarket.service.OrderService;
+import edu.mum.emarket.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,11 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	private ProductRepository productRepository;
+
+
+	@Autowired
+	private UserService userService;
+
 
 	@Autowired
 	private UserRepository userRepository;
@@ -41,7 +47,7 @@ public class OrderServiceImpl implements OrderService {
 	
 	public Long saveOrder(Order  order) {
 
-		User customer = userRepository.save(order.getCustomer());
+		User customer = userRepository.findByEmail(userService.getLoggedInPerson().getEmail());
 		order.setCustomer(customer);
 		order.setShippingDetail(shippingRepository.save(order.getShippingDetail()));
 		Order orderId = orderRepository.save(order);

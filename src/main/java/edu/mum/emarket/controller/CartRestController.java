@@ -48,7 +48,7 @@ public class CartRestController {
 		cart.addCartItem(new CartItem(product));
 		System.out.printf("Product ITEM: %s\n",product.getProductTitle());
 		System.out.printf("CART ITEM: %s\n",cart.getCartItems().size());
-	
+
 		cartService.update(sessionId, cart);
 	}
 	

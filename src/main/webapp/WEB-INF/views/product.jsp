@@ -7,7 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="<spring:url value="/resources/js/cart.js"/>"></script>
 
 <title>Products</title>
 </head>
@@ -62,7 +63,7 @@
 
 				<h4>${product.price}USD</h4>
 				<p>
-					<a href="#" class="btn btn-warning btn-large" onclick="addToCart('${product.productId}')">
+					<a href="#" class="btn btn-warning btn-large" onclick="addToCart('${product.id}')">
 						<span class="glyphicon-shopping-cart glyphicon"></span> Order Now </a>
 					<a href="<spring:url value="/cart" />" class="btn btn-default">
 						<span class="glyphicon-hand-right glyphicon"></span> View Cart

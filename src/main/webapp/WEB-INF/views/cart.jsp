@@ -72,8 +72,8 @@
 	
 		<c:forEach  var="item" items ="${cart.cartItems}" >
 				<tr>
-					<td>${item.value.product.productId}</td>
-					<td>${item.value.product.title}</td>
+					<td>${item.value.product.id}</td>
+					<td>${item.value.product.productTitle}</td>
 					<td>${item.value.product.price}</td>
 					<td>${item.value.quantity}</td>
 					<td>${item.value.totalPrice}</td>

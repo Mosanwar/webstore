@@ -46,7 +46,7 @@ public class Order implements Serializable{
 		this.shippingDetail = new ShippingDetail();
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private User customer;
 
 	public User getCustomer() {

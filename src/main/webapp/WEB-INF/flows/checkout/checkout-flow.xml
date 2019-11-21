@@ -13,7 +13,7 @@
 			result="order.cart" />
 		<transition to="InvalidCartWarning"
 			on-exception="edu.mum.emarket.exception.InvalidCartException" />
-		<transition to="collectCustomerInfo" />
+		<transition to="collectShippingDetail" />
 	</action-state>
 
 	<view-state id="collectCustomerInfo" view="collectCustomerInfo.jsp" model="order">

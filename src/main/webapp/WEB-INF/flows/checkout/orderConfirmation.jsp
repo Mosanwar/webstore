@@ -67,7 +67,7 @@
 							<tbody>
 								<c:forEach var="cartItem" items="${order.cart.cartItems}">
 									<tr>
-										<td class="col-md-9"><em>${cartItem.value.product.title}</em></td>
+										<td class="col-md-9"><em>${cartItem.value.product.productTitle}</em></td>
 										<td class="col-md-1" style="text-align: center">
 											${cartItem.value.quantity}</td>
 										<td class="col-md-1 text-center">$${cartItem.value.product.price}</td>
