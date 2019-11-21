@@ -51,15 +51,15 @@
 				</security:authorize>
 			</ul>
 		</div>
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">Profile</a></li>
-			<li><a href="#">Add Product</a></li>
-			<li><a href="#">Chart</a></li>
-			<li><a href="admin">Admin</a></li>
-			<li><a href="offers">Offers</a></li>
-			<li><a style="margin-left: 700px" href="#">Login</a></li>
-		</ul>
+<!-- 		<ul class="nav navbar-nav"> -->
+<!-- 			<li class="active"><a href="#">Home</a></li> -->
+<!-- 			<li><a href="#">Profile</a></li> -->
+<!-- 			<li><a href="#">Add Product</a></li> -->
+<!-- 			<li><a href="#">Chart</a></li> -->
+<!-- 			<li><a href="admin">Admin</a></li> -->
+<!-- 			<li><a href="offers">Offers</a></li> -->
+<!-- 			<li><a style="margin-left: 700px" href="#">Login</a></li> -->
+<!-- 		</ul> -->
 	</div>
 </nav>
 
