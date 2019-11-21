@@ -52,22 +52,24 @@ public class ProductController {
 				int i = (int) (date.getTime() / 1000);
 				String path = rootDirectory + "resources\\images\\" + i + ".png";
 				productImage.transferTo(new File(path));
-				Photo photo = new Photo();
-				photo.setUrl(path);
-				Set<Photo> photos = new HashSet<Photo>();
-				photos.add(photo);
-				product.setPhotos(photos);
+//				Photo photo = new Photo();
+//				photo.setUrl(path);
+//				photo.setProduct(product);
+//				Set<Photo> photos = new HashSet<Photo>();
+//				photos.add(photo);
+//				product.setPhotos(photos);
+				product.setPhoto(path);
 			} catch (Exception e) {
 				throw new RuntimeException("Product Image saving failed", e);
 			}
 		}
 		productService.addProduct(product);
-		redirectAttributes.addFlashAttribute("product", product);
-		return "redirect:/product";
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = { "/product" }, method = RequestMethod.GET)
-	public String viewProduct() {
+	public String viewProduct(@RequestParam("id") long id, Model model) {
+		model.addAttribute("product", productService.getProductById(id));
 		return "product";
 	}
 

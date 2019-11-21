@@ -35,12 +35,12 @@
 			<div class="col-md-5">
 
 				<img
-					src="<c:url value="/resource/images/${product.productId}.png"></c:url>"
+					src="<c:url value="${product.photos[0].url} "></c:url>"
 					alt="image" style="width: 100%" />
 			</div>
 
 			<div class="col-md-5">
-				<h3>${product.title}</h3>
+				<h3>${product.productTitle}</h3>
 				<p>${product.description}</p>
 				
 				<p>

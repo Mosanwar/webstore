@@ -19,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -50,10 +51,6 @@ public class Product implements Serializable {
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-
 	@Column(name = "CITY")
 	private String city;
 	@Column(name = "COUNTRY")
@@ -63,9 +60,6 @@ public class Product implements Serializable {
 	@JoinColumn(name = "CATEGORY_ID")
 	private Category category;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	@ManyToOne
 	@JoinColumn(name = "USER_ID")
@@ -76,18 +70,18 @@ public class Product implements Serializable {
 	@JsonIgnoreProperties(value = { "product" })
 	private Set<Offer> offers;
 
-	@OneToMany(fetch = FetchType.EAGER, targetEntity = Photo.class, mappedBy = "product", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "product" })
-	private Set<Photo> photos;
+//	@OneToMany(fetch = FetchType.EAGER, targetEntity = Photo.class, mappedBy = "product", cascade = CascadeType.ALL)
+//	@JsonIgnoreProperties(value = { "product" })
+//	private Set<Photo> photos;
+	
+//	@OneToOne( cascade = CascadeType.ALL)
+//	@JsonIgnoreProperties(value = { "product" })
+//	@JoinColumn(name="photo_")
+	private String photo;
 
 	@Transient
 	private MultipartFile productImage;
 	
-	
-
-	public void setProductImage(MultipartFile productImage) {
-		this.productImage = productImage;
-	}
 
 	public Product() {
 	}
@@ -102,15 +96,13 @@ public class Product implements Serializable {
 		this.country = country;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-
-
 
 	public String getProductTitle() {
 		return productTitle;
@@ -120,15 +112,44 @@ public class Product implements Serializable {
 		this.productTitle = productTitle;
 	}
 
+	public long getUnitsInStock() {
+		return unitsInStock;
+	}
+
+	public void setUnitsInStock(long unitsInStock) {
+		this.unitsInStock = unitsInStock;
+	}
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
 	public String getDescription() {
 		return description;
 	}
 
-
-
-
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public Category getCategory() {
@@ -155,51 +176,44 @@ public class Product implements Serializable {
 		this.offers = offers;
 	}
 
-	public Set<Photo> getPhotos() {
-		return photos;
-	}
-
-	public void setPhotos(Set<Photo> photos) {
-		this.photos = photos;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
+//	public Set<Photo> getPhotos() {
+//		return photos;
+//	}
+//
+//	public void setPhotos(Set<Photo> photos) {
+//		this.photos = photos;
+//	}
+	
 
 	public MultipartFile getProductImage() {
-		// TODO Auto-generated method stub
 		return productImage;
 	}
+
+//	public Photo getPhoto() {
+//		return photo;
+//	}
+//
+//	public void setPhoto(Photo photo) {
+//		this.photo = photo;
+//	}
 	
-	public long getUnitsInStock() {
-		return unitsInStock;
+	
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
 	}
 
-	public void setUnitsInStock(long unitsInStock) {
-		this.unitsInStock = unitsInStock;
+	public String getPhoto() {
+		return photo;
 	}
 
-
-
-	public String getProductId() {
-		return productId;
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
-	public void setProductId(String productId) {
-		this.productId = productId;
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
+	
 
 }
