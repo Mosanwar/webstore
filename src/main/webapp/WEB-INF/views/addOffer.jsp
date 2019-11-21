@@ -13,7 +13,7 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script type="text/javascript"
-	src="<spring:url value="/resource/js/offer.js"/>"></script>
+	src="<spring:url value="/resources/js/offer.js"/>"></script>
 </head>
 <body>
 
