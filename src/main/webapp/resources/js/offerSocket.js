@@ -73,14 +73,14 @@ var subscriptOffer = function(){
 	stompClient.connect({}, function(frame) {
 		console.log('*** start subscription <<<')
 		stompClient.subscribe('/offer', function (message) {
-			console.log("=======================*******==")
-	    	console.log('>>>> web socket recieved : ',message)
-	    	console.log('>>>> web socket body recieved : ', JSON.parse(message.body))
-	    	$('#result').html("");
-			$("#result").append('<H3 align="center"> A new Offer Added!! <H3>');
-			$("#result").append('<div> Price '+message.body.price+'</div>');
-			$("#result").append('<div> Description '+message.body.description+'</div>');
-			$("#result").append('<div> product '+message.body.product.title+'</div>');
+	    	console.log('>>>> web socket body recieved : ', JSON.parse(message.body));
+			let offer = message.body;
+//	    	$('#result').html("");
+			$("#result").append('<div><H3 align="center"> A new Offer Added!! <H3>');
+			$("#result").append('<div> Price '+offer.price+'</div>');
+			$("#result").append('<div> Description '+offer.description+'</div>');
+//			$("#result").append('<div> product '+offer.product.productTitle+'</div>');
+			$("#result").append('</div>');
 			$('#result').show();
 //	        showMessage(JSON.parse(message.body));
 	    });
