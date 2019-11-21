@@ -41,7 +41,8 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = { "/addProduct" }, method = RequestMethod.POST)
-	public String postProduct(@ModelAttribute("product") Product product, BindingResult result, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+	public String postProduct(@ModelAttribute("product") Product product, BindingResult result,
+			HttpServletRequest request, RedirectAttributes redirectAttributes) {
 
 		MultipartFile productImage = product.getProductImage();
 		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
@@ -58,7 +59,7 @@ public class ProductController {
 //				Set<Photo> photos = new HashSet<Photo>();
 //				photos.add(photo);
 //				product.setPhotos(photos);
-				product.setPhoto(path);
+				product.setPhoto("resources\\images\\" + i + ".png");
 			} catch (Exception e) {
 				throw new RuntimeException("Product Image saving failed", e);
 			}
