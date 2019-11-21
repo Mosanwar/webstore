@@ -4,8 +4,6 @@ package edu.mum.emarket.service;
 import edu.mum.emarket.domain.Product;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public interface ProductService {
 
