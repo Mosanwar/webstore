@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -50,10 +51,6 @@ public class Product implements Serializable {
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-
 	@Column(name = "CITY")
 	private String city;
 	@Column(name = "COUNTRY")
@@ -62,10 +59,6 @@ public class Product implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "CATEGORY_ID")
 	private Category category;
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	@ManyToOne
 	@JoinColumn(name = "USER_ID")
@@ -76,16 +69,17 @@ public class Product implements Serializable {
 	@JsonIgnoreProperties(value = { "product" })
 	private Set<Offer> offers;
 
-	@OneToMany(fetch = FetchType.EAGER, targetEntity = Photo.class, mappedBy = "product", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties(value = { "product" })
-	private Set<Photo> photos;
+//	@OneToMany(fetch = FetchType.EAGER, targetEntity = Photo.class, mappedBy = "product", cascade = CascadeType.ALL)
+//	@JsonIgnoreProperties(value = { "product" })
+//	private Set<Photo> photos;
+
+//	@OneToOne( cascade = CascadeType.ALL)
+//	@JsonIgnoreProperties(value = { "product" })
+//	@JoinColumn(name="photo_")
+	private String photo;
 
 	@Transient
 	private MultipartFile productImage;
-
-	public void setProductImage(MultipartFile productImage) {
-		this.productImage = productImage;
-	}
 
 	public Product() {
 	}
@@ -98,6 +92,14 @@ public class Product implements Serializable {
 		this.price = price;
 		this.city = city;
 		this.country = country;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getProductTitle() {
@@ -172,20 +174,24 @@ public class Product implements Serializable {
 		this.offers = offers;
 	}
 
-	public Set<Photo> getPhotos() {
-		return photos;
+	public String getPhoto() {
+		return photo;
 	}
 
-	public void setPhotos(Set<Photo> photos) {
-		this.photos = photos;
-	}
-
-	public Long getId() {
-		return id;
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 	public MultipartFile getProductImage() {
 		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
 
 }

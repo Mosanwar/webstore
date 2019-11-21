@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,9 +20,10 @@ public class Photo {
 	@Column(name = "URL")
 	private String url;
 
-	@ManyToOne
-	@JoinColumn(name = "PRODUCT_ID")
-	private Product product;
+//	@ManyToOne
+//	@OneToOne
+//	@JoinColumn(name = "PRODUCT_ID")
+//	private Product product;
 
 	public long getId() {
 		return id;
@@ -39,12 +41,12 @@ public class Photo {
 		this.url = url;
 	}
 
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
+//	public Product getProduct() {
+//		return product;
+//	}
+//
+//	public void setProduct(Product product) {
+//		this.product = product;
+//	}
 
 }

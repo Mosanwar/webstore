@@ -1,41 +1,53 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script type="text/javascript"
-	src="<spring:url value="/resource/js/cart.js"/>"></script>
+
 
 <title>Products</title>
 </head>
 <body>
-
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Rangers Webstore</a>
-			</div>
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="<spring:url value="/" />">Home</a></li>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Add Product</a></li>
-				<li><a href="<spring:url value="/product" />">Chart</a></li>
-				<li><a href="#">Admin</a></li>
-				<li><a style="margin-left: 700px" href="#">Login</a></li>
-			</ul>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Rangers Webstore</a>
 		</div>
-	</nav>
-	<section class="container">
-
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="<spring:url value="/" />">Home</a></li>
+			<security:authorize access="isAuthenticated()">
+				<li><a href="profile">Profile</a></li>
+			</security:authorize>
+			<security:authorize access="isAuthenticated()">
+				<li><a href="#">Add Product</a></li>
+			</security:authorize>
+			<security:authorize access="hasRole('ROLE_ADMIN')">
+				<li><a href="admin">Admin</a></li>
+			</security:authorize>
+			<security:authorize access="isAuthenticated()">
+				<li><a href="<spring:url value="/product" />">Chart</a></li>
+			</security:authorize>
+			<li><a href="offers">Offers</a></li>
+			<security:authorize access="isAnonymous()">
+				<li><a style="margin-left: 700px" href="<spring:url value="/login" />">Login</a></li>
+			</security:authorize>
+			<security:authorize access="isAuthenticated()">
+				<li>Logged in by: <security:authentication property="principal.username" /></li>
+			</security:authorize>
+		</ul>
+	</div>
+</nav>
+ 	<section class="container" >
+	
 		<div class="row">
 			<div class="col-md-5">
 
 				<img
-					src="<c:url value="/resource/images/${product.productId}.png"></c:url>"
+					src="<c:url value="${product.photo}"></c:url>"
 					alt="image" style="width: 100%" />
 			</div>
 
@@ -50,12 +62,8 @@
 
 				<h4>${product.price}USD</h4>
 				<p>
-					<a href="#" class="btn btn-warning btn-large"
-						onclick="addToCart('${product.productId}')"> <span
-						class="glyphicon-shopping-cart glyphicon"></span> Order Now
-					</a> <a href="<spring:url value="/cart" />" class="btn btn-default">
-						<span class="glyphicon-hand-right glyphicon"></span> View Cart
-					</a> <a href="<spring:url value="/products" />" class="btn btn-default">
+					 
+					</a> <a href="<spring:url value="/" />" class="btn btn-default">
 						<span class="glyphicon-hand-left glyphicon"></span> back
 					</a>
 

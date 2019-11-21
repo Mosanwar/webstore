@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,12 +25,25 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="#">Home</a></li>
-			<li><a href="#">Profile</a></li>
-			<li><a href="#">Add Product</a></li>
-			<li><a href="#">Chart</a></li>
-			<li><a href="admin">Admin</a></li>
+			<security:authorize access="isAuthenticated()">
+				<li><a href="profile">Profile</a></li>
+			</security:authorize>
+			<security:authorize access="isAuthenticated()">
+				<li><a href="#">Add Product</a></li>
+			</security:authorize>
+			<security:authorize access="hasRole('ROLE_ADMIN')">
+				<li><a href="admin">Admin</a></li>
+			</security:authorize>
+			<security:authorize access="isAuthenticated()">
+				<li><a href="<spring:url value="/product" />">Chart</a></li>
+			</security:authorize>
 			<li><a href="offers">Offers</a></li>
-			<li><a style="margin-left: 700px" href="#">Login</a></li>
+			<security:authorize access="isAnonymous()">
+				<li><a style="margin-left: 700px" href="<spring:url value="/login" />">Login</a></li>
+			</security:authorize>
+			<security:authorize access="isAuthenticated()">
+				<li>Logged in by: <security:authentication property="principal.username" /></li>
+			</security:authorize>
 		</ul>
 	</div>
 </nav>
@@ -37,7 +52,7 @@
   <a class="navbar-brand" href="admin"><spring:message code="admin.home.AdminHome" /></a>
   <a class="navbar-brand" href="reportedUsers"><spring:message code="admin.home.ReportedUsers" /></a>
   <a class="navbar-brand" href="manageUsers"><spring:message code="admin.home.ManageUsers" /></a>
-  
+
   		<div class="pull-right" style="padding: 15px 70px; font-size: 18px;">
 			<a href="?language=en">English</a> | <a href="?language=fr">French</a>
 		</div>
@@ -50,7 +65,7 @@
 			<div class="container">
 				<h1><spring:message code="admin.home.AdminHome" /></h1>
 			<p><spring:message code="admin.home.WelcomeAdmin" /> ${user.name}</p>
-			           
+
 			</div>
 		</div>
 	</section>
@@ -106,10 +121,10 @@
 
 						</div>
 					</div>
-				</div>	
+				</div>
 				<div id="result" style="margin: 5px">
-				
-				</div>							
+
+				</div>
 			
 		</div>
 	</section>
