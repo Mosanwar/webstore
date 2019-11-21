@@ -15,11 +15,11 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="<spring:url value="/" />">Home</a></li>
-			<li><a href="#">Profile</a></li>
+			<li><a href="<spring:url value="/profile" />">Profile</a></li>
 			<li><a href="#">Add Product</a></li>
 			<li><a href="<spring:url value="/product" />">Chart</a></li>
 			<li><a href="#">Admin</a></li>
-			<li><a style="margin-left: 700px" href="#">Login</a></li>
+			<li><a style="margin-left: 700px" href="<spring:url value="/login" />">Login</a></li>
 		</ul>
 	</div>
 </nav>
