@@ -1,5 +1,8 @@
 package edu.mum.emarket.domain;
 
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -17,9 +20,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity(name = "PRODUCT")
+@Entity
+@Table(name = "PRODUCT")
 public class Product implements Serializable {
 
 	@Id
@@ -27,28 +34,10 @@ public class Product implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "TITLE")
-	private String title;
+	@NotEmpty
+	private String productTitle;
 
 	private long unitsInStock;
-
-	public long getUnitsInStock() {
-		return unitsInStock;
-	}
-
-	public void setUnitsInStock(long unitsInStock) {
-		this.unitsInStock = unitsInStock;
-	}
-
-
-
-	public String getProductId() {
-		return productId;
-	}
-
-	public void setProductId(String productId) {
-		this.productId = productId;
-	}
 
 	@Column(name = "PRODUCT_ID")
 	private String productId;
@@ -56,6 +45,15 @@ public class Product implements Serializable {
 	private String description;
 	@Column(name = "PRICE")
 	private BigDecimal price;
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+
 	@Column(name = "CITY")
 	private String city;
 	@Column(name = "COUNTRY")
@@ -82,50 +80,72 @@ public class Product implements Serializable {
 	@JsonIgnoreProperties(value = { "product" })
 	private Set<Photo> photos;
 
+	@Transient
+	private MultipartFile productImage;
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
+
 	public Product() {
 	}
 
 	public Product(long id, String title, String description, LocalDate expirDate, BigDecimal price, String city,
 			String country) {
 		this.id = id;
-		this.title = title;
+		this.productTitle = title;
 		this.description = description;
 		this.price = price;
 		this.city = city;
 		this.country = country;
 	}
 
-	public long getId() {
-		return id;
+	public String getProductTitle() {
+		return productTitle;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setProductTitle(String productTitle) {
+		this.productTitle = productTitle;
 	}
 
-	public String getTitle() {
-		return title;
+	public long getUnitsInStock() {
+		return unitsInStock;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setUnitsInStock(long unitsInStock) {
+		this.unitsInStock = unitsInStock;
+	}
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
-	public BigDecimal getPrice() {
-		return price;
-	}
-
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-
-
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public Category getCategory() {
@@ -160,20 +180,12 @@ public class Product implements Serializable {
 		this.photos = photos;
 	}
 
-	public String getCity() {
-		return city;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
+	public MultipartFile getProductImage() {
+		return productImage;
 	}
 
 }

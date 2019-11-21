@@ -94,7 +94,7 @@
 									<spring:message code="offer.form.selectProduct" />
 								</form:option>
 								<form:options items="${products}" itemValue="id"
-									itemLabel="title" />
+									itemLabel="productTitle" />
 							</form:select>
 							<form:errors path="product" cssClass="text-danger" />
 						</div>
