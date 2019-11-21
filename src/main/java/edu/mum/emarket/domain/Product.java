@@ -1,6 +1,5 @@
 package edu.mum.emarket.domain;
 
-
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
@@ -46,6 +45,7 @@ public class Product implements Serializable {
 	private String description;
 	@Column(name = "PRICE")
 	private BigDecimal price;
+
 	public BigDecimal getPrice() {
 		return price;
 	}
@@ -82,8 +82,6 @@ public class Product implements Serializable {
 
 	@Transient
 	private MultipartFile productImage;
-	
-	
 
 	public void setProductImage(MultipartFile productImage) {
 		this.productImage = productImage;
@@ -102,16 +100,6 @@ public class Product implements Serializable {
 		this.country = country;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-
-
 	public String getProductTitle() {
 		return productTitle;
 	}
@@ -120,15 +108,44 @@ public class Product implements Serializable {
 		this.productTitle = productTitle;
 	}
 
+	public long getUnitsInStock() {
+		return unitsInStock;
+	}
+
+	public void setUnitsInStock(long unitsInStock) {
+		this.unitsInStock = unitsInStock;
+	}
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
+
 	public String getDescription() {
 		return description;
 	}
 
-
-
-
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public Category getCategory() {
@@ -163,43 +180,12 @@ public class Product implements Serializable {
 		this.photos = photos;
 	}
 
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
+	public Long getId() {
+		return id;
 	}
 
 	public MultipartFile getProductImage() {
-		// TODO Auto-generated method stub
 		return productImage;
-	}
-	
-	public long getUnitsInStock() {
-		return unitsInStock;
-	}
-
-	public void setUnitsInStock(long unitsInStock) {
-		this.unitsInStock = unitsInStock;
-	}
-
-
-
-	public String getProductId() {
-		return productId;
-	}
-
-	public void setProductId(String productId) {
-		this.productId = productId;
 	}
 
 }

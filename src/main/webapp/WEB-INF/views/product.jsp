@@ -40,14 +40,14 @@
 			</div>
 
 			<div class="col-md-5">
-				<h3>${product.title}</h3>
+				<h3>${product.productTitle}</h3>
 				<p>${product.description}</p>
-				
+
 				<p>
 
 					<strong>category</strong> : ${product.category}
 				</p>
-				
+
 				<h4>${product.price}USD</h4>
 				<p>
 					<a href="#" class="btn btn-warning btn-large"
