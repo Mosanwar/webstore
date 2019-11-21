@@ -62,6 +62,11 @@
 
 				<h4>${product.price}USD</h4>
 				<p>
+					<a href="#" class="btn btn-warning btn-large" onclick="addToCart('${product.productId}')">
+						<span class="glyphicon-shopping-cart glyphicon"></span> Order Now </a>
+					<a href="<spring:url value="/cart" />" class="btn btn-default">
+						<span class="glyphicon-hand-right glyphicon"></span> View Cart
+					</a>
 					 
 					</a> <a href="<spring:url value="/" />" class="btn btn-default">
 						<span class="glyphicon-hand-left glyphicon"></span> back

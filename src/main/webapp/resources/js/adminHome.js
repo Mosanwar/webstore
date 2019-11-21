@@ -18,10 +18,7 @@ $(document).ready(function() {
 			$.ajax({
 				type: 'GET',
 				url: contextRoot + '/showAllProducts',
-		 		
 				dataType: "json",
-//				contentType : 'application/json', 
-				
 			 	 success: function (response) {
 			 		console.log('>>> get product success',response)	
 			 		 displayProduct(response);
@@ -34,19 +31,19 @@ $(document).ready(function() {
 	   
 	   function displayProduct(products) {
 	 
+		   	let tableTags= '<table class="table table-striped"><thead><tr> <th scope="col">Product Id</th>'+
+			' <th scope="col">Product Name</th> <th scope="col">Price</th>'+
+			' </tr> </thead> <tbody>';
 			$('#result').html("");
 			$("#result").append('<h4 align="right"> <a href="#" onclick="toggle_visibility(\'result\');"><b>CLOSE</b> </a> </h4>');
 			$("#result").append( '<H3 align="center"> Products List <H3>');  
-			$("#result").append( '<table class="table table-striped"><thead><tr> <th scope="col">Product Id</th> <th scope="col">Product Name</th> <th scope="col">Price</th> <th scope="col">category</th> </tr> </thead> <tbody>');
-			
-		
 			   
  	 	        $.each(products,  function(i,product) {		
- 	 	        	
- 		    		$("#result").append
- 		    		( '<tr> <td>product.productId</td> <td>product.name</td> <td>product.unitPrice</td> <td>product.category</td> </tr>');
+ 	 	        	tableTags+='<tr> <td>'+product.id+'</td> <td>'+product.productTitle+'</td> <td>'+product.price+'</td>'+
+	    				+'</tr>';
                      });
- 	 	      $("#result").append( '</tbody> </table>');              
+ 	 	      tableTags +='</tbody> </table>';
+ 	 	    $("#result").append( tableTags);
 			$("#result").attr("style", "display: block")
 	 		} 
 	 
