@@ -58,7 +58,7 @@ function addOffer() {
 	});
 }
 
-resetForm = function(id) {
+var resetForm = function(id) {
 	var element = document.getElementById(id);
 	$(element)[0].reset();
 

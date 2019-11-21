@@ -3,10 +3,10 @@ package edu.mum.emarket.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +25,9 @@ public class OfferController {
 
 	@Autowired
 	private OfferService offerService;
+	
+	@Autowired
+	private SimpMessagingTemplate template;
 
 	@RequestMapping(value = "/offers", method = RequestMethod.GET)
 	public String home(Model model) {
@@ -43,6 +46,8 @@ public class OfferController {
 	public @ResponseBody Offer addOffer(@Valid @RequestBody Offer offer) {
 		System.out.println(">>> save offer");
 		Offer response = offerService.addOffer(offer);
+		System.out.println(">>>>> send to broker: /topic/offer");
+		this.template.convertAndSend("/topic", response);
 		return response;
 	}
 

@@ -9,9 +9,18 @@
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.0.3/sockjs.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript"
+	src="<spring:url value="/resource/js/stomp.js"/>"></script>
+	<script type="text/javascript"
+	src="<spring:url value="/resource/js/offerSocket.js"/>"></script>
+	
 <title>Offers</title>
 </head>
-<body>
+<body onload="subscriptOffer()">
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -83,5 +92,11 @@
 			</c:forEach>
 		</div>
 	</section>
+	
+		<div id="result"
+			style="display: none; border: medium; background: #bce8f1;"></div>
+			
+  
+	
 </body>
 </html>
