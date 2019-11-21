@@ -41,7 +41,7 @@ public class AuthenticationController {
         }
 
         getUserService().registerUser(user);
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @RequestMapping("/emp") 
