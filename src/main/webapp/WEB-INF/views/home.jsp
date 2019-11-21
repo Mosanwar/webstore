@@ -22,10 +22,10 @@
                 <li><a href="profile">Profile</a></li>
 			</security:authorize>
 			<security:authorize access="isAuthenticated()">
-				<li><a href="#">Add Product</a></li>
+				<li><a href="<spring:url value="/addProduct" />">Add Product</a></li>
 			</security:authorize>
 			<security:authorize access="hasRole('ROLE_ADMIN')">
-				<li><a href="admin">Admin</a></li>
+				<li><a href="<spring:url value="/admin" />">Admin</a></li>
 			</security:authorize>
 			<li><a href="offers">Offers</a></li>
 			<security:authorize access="isAnonymous()">

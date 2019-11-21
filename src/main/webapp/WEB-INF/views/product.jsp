@@ -77,6 +77,9 @@
 
 			</div>
 		</div>
+		<div style="display: none" id="successAlert" class="alert alert-success">
+			<strong>Success!</strong>Product Successfully added to the cart.
+		</div>
 		<!--/div-->
 	</section>
 </body>

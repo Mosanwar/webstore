@@ -11,8 +11,10 @@ $(document).ready(function() {
 		 		type: 'PUT',
 				dataType: "json",
 				success: function(response){
-	 		 		alert("Product Successfully added to the Cart!");
-
+					document.getElementById("successAlert").style.display = "block";
+					setTimeout(function () {
+						document.getElementById("successAlert").style.display = "none";
+					},2000)
 				},
 				error: function(){						
 					alert('Error while request..');

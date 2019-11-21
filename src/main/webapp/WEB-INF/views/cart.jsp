@@ -51,50 +51,51 @@
  	</section>	
 
  	<section class="container" >
- 		<div>
+		<div>
 
-			<div>
-				 <a href="<spring:url value="/checkout?cartId=${cartId}"/>" class="btn btn-success pull-right"> <span
-					class="glyphicon-shopping-cart glyphicon"></span> Check out
-				</a>
-			</div>
-			<table class="table table-hover">
+
+			<table class="table table-striped table-hover">
 				<tr>
-					<th>---ID---</th>
-					<th>Name</th>
-					<th>Unit price</th>
-					<th>Quantity</th>
-					<th>Price</th>
-					<th>Action</th>
+					<th style="padding: 20px">---ID---</th>
+					<th style="padding: 20px">Name</th>
+					<th style="padding: 20px">Unit price</th>
+					<th style="padding: 20px">Quantity</th>
+					<th style="padding: 20px">Price</th>
+					<th style="padding: 20px">Action</th>
 				</tr>
 			</table>
-	<table id="cart_table" class="table table-hover">
-	
-		<c:forEach  var="item" items ="${cart.cartItems}" >
+			<table id="cart_table" class="table table-hover">
+
+				<c:forEach  var="item" items ="${cart.cartItems}" >
+					<tr>
+						<td style="text-align: center;padding: 20px">${item.value.product.id}</td>
+						<td style="text-align: center;padding: 20px">${item.value.product.productTitle}</td>
+						<td style="text-align: center;padding: 20px">${item.value.product.price}</td>
+						<td style="text-align: center;padding: 20px">${item.value.quantity}</td>
+						<td style="text-align: center;padding: 20px">${item.value.totalPrice}</td>
+						<td style="text-align: center;padding: 20px"><a href="#" class="btn btn-danger" onclick="removeFromCart('${item.value.product.productId}');"> <span
+								class="glyphicon glyphicon-remove" /></span> Remove
+						</a></td>
+					</tr>
+				</c:forEach>
+
 				<tr>
-					<td>${item.value.product.id}</td>
-					<td>${item.value.product.productTitle}</td>
-					<td>${item.value.product.price}</td>
-					<td>${item.value.quantity}</td>
-					<td>${item.value.totalPrice}</td>
-					<td><a href="#" class="label label-danger" onclick="removeFromCart('${item.value.product.productId}');"> <span
-							class="glyphicon glyphicon-remove" /></span> Remove
-					</a></td>
-				</tr>
-		</c:forEach>
-  
-				<tr>
-					<th></th>
-					<th></th>
-					<th>Grand Total</th>
-					<th>${cart.grandTotal}</th>
-					<th></th>
+					<th style="padding: 20px"></th>
+					<th style="padding: 20px"></th>
+					<th style="padding: 20px">Grand Total</th>
+					<th style="padding: 20px">${cart.grandTotal}</th>
+					<th style="padding: 20px"></th>
 				</tr>
 			</table>
-			
-			<a href="<spring:url value="/product" />" class="btn btn-default">
-						<span class="glyphicon-hand-left glyphicon"></span> Continue shopping
+
+			<a href="<spring:url value="/product?id=${cart.cartItems[0].value.product.id}" />" class="btn btn-default">
+				<span class="glyphicon-hand-left glyphicon"></span> Continue shopping
 			</a>
+
+			<a style="float: right" href="<spring:url value="/checkout?cartId=${cartId}"/>" class="btn btn-success pull-right"> <span
+					class="glyphicon-shopping-cart glyphicon"></span> Check out
+			</a>
+
 		</div>
 	</section>
 </body>
