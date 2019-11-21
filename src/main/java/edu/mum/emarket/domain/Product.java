@@ -1,6 +1,5 @@
 package edu.mum.emarket.domain;
 
-
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
@@ -47,6 +46,7 @@ public class Product implements Serializable {
 	private String description;
 	@Column(name = "PRICE")
 	private BigDecimal price;
+
 	public BigDecimal getPrice() {
 		return price;
 	}
@@ -60,7 +60,6 @@ public class Product implements Serializable {
 	@JoinColumn(name = "CATEGORY_ID")
 	private Category category;
 
-
 	@ManyToOne
 	@JoinColumn(name = "USER_ID")
 	@JsonIgnoreProperties(value = { "offers", "products", "makeReports", "hasReports" })
@@ -73,7 +72,7 @@ public class Product implements Serializable {
 //	@OneToMany(fetch = FetchType.EAGER, targetEntity = Photo.class, mappedBy = "product", cascade = CascadeType.ALL)
 //	@JsonIgnoreProperties(value = { "product" })
 //	private Set<Photo> photos;
-	
+
 //	@OneToOne( cascade = CascadeType.ALL)
 //	@JsonIgnoreProperties(value = { "product" })
 //	@JoinColumn(name="photo_")
@@ -81,7 +80,6 @@ public class Product implements Serializable {
 
 	@Transient
 	private MultipartFile productImage;
-	
 
 	public Product() {
 	}
@@ -176,33 +174,6 @@ public class Product implements Serializable {
 		this.offers = offers;
 	}
 
-//	public Set<Photo> getPhotos() {
-//		return photos;
-//	}
-//
-//	public void setPhotos(Set<Photo> photos) {
-//		this.photos = photos;
-//	}
-	
-
-	public MultipartFile getProductImage() {
-		return productImage;
-	}
-
-//	public Photo getPhoto() {
-//		return photo;
-//	}
-//
-//	public void setPhoto(Photo photo) {
-//		this.photo = photo;
-//	}
-	
-	
-
-	public void setProductImage(MultipartFile productImage) {
-		this.productImage = productImage;
-	}
-
 	public String getPhoto() {
 		return photo;
 	}
@@ -211,9 +182,16 @@ public class Product implements Serializable {
 		this.photo = photo;
 	}
 
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
+
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
-	
 
 }

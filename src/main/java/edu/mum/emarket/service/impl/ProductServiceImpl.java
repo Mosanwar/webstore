@@ -53,4 +53,10 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.getProductByProductId(productID);
 	}
 
+	@Override
+	public Product getProductById(String productID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

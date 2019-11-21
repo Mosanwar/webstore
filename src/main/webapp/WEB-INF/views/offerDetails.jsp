@@ -46,12 +46,12 @@
 		<div class="row">
 			<div class="col-md-5">
 				<img
-					src="<c:url value="/resource/images/${offer.product.id}.png"></c:url>"
+					src="<c:url value="${offer.product.photo }"></c:url>"
 					alt="image" style="width: 100%" />
 			</div>
 
 			<div class="col-md-5">
-				<h3>${offer.product.title}</h3>
+				<h3>${offer.product.productTitle}</h3>
 				<p><strong><spring:message code="offer.form.description"/>: </strong> ${offer.description}</p>
 				<p><strong><spring:message code="offer.form.newPrice"/>: </strong> ${offer.price} $</p>
 				<p><strong><spring:message code="offer.form.oldPrice"/>: </strong> ${offer.product.price} $</p>

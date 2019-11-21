@@ -29,7 +29,7 @@ function addOffer() {
 			$("#result").append('<div> Description '+offer.description+'</div>');
 			$("#result").append('<div> product '+offer.product.title+'</div>');
 			$('#result').show();
-			resetForm('result');
+//			resetForm('result');
 		},
 
 		error : function(errorObject) {
@@ -58,7 +58,7 @@ function addOffer() {
 	});
 }
 
-resetForm = function(id) {
+var resetForm = function(id) {
 	var element = document.getElementById(id);
 	$(element)[0].reset();
 
