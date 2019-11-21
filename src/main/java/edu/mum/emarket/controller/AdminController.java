@@ -87,6 +87,10 @@ public class AdminController {
 	public @ResponseBody List<Product> showAllProducts(){
 		System.out.println(">>>show all products");
 		List<Product> pp =  productService.getAllProducts();
+		for (Product p : pp) {
+			p.setUser(null);
+			p.setOffers(null);
+		}
 		return pp;
 	}
 

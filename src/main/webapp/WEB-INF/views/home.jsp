@@ -16,18 +16,11 @@
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="<spring:url value="/" />">Home</a></li>
 			<li><a href="#">Profile</a></li>
-<<<<<<< HEAD
-			<li><a href="addProduct">Add Product</a></li>
-			<li><a href="#">Chart</a></li>
-=======
 			<li><a href="#">Add Product</a></li>
 			<li><a href="admin">Admin</a></li>
 			<li><a href="<spring:url value="/product" />">Chart</a></li>
-<<<<<<< HEAD
->>>>>>> bf3ada8af3425395baf11ed232bbb81b4db4754e
-=======
+
 			<li><a href="offers">Offers</a></li>
->>>>>>> a2235d41531864776c12a6c2830b06d02656b977
 			<li><a href="#">Admin</a></li>
 			<li><a style="margin-left: 700px" href="<spring:url value="/login" />">Login</a></li>
 		</ul>
