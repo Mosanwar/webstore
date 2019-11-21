@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+							http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+<!-- Flow level variable definition SO flow scope -->
+	<var name="order" class="edu.mum.emarket.domain.Order" />
+
+<!-- First "state" listed is first executed - unless <on-start> -->
+	<action-state id="addCartToOrder">
+		<evaluate expression="cartServiceImpl.validate(requestParameters.cartId)"
+			result="order.cart" />
+		<transition to="InvalidCartWarning"
+			on-exception="edu.mum.emarket.exception.InvalidCartException" />
+		<transition to="collectCustomerInfo" />
+	</action-state>
+
+	<view-state id="collectCustomerInfo" view="collectCustomerInfo.jsp" model="order">
+		<transition on="customerInfoCollected" to="collectShippingDetail" />
+		<transition on="checkoutCancelled" to="cancelCheckout" />
+	</view-state>
+
+	<view-state id="collectShippingDetail" model="order">
+		<transition on="shippingDetailCollected" to="orderConfirmation" />
+		<transition on="backToCollectCustomerInfo" to="collectCustomerInfo" />
+	</view-state>
+
+	<view-state id="orderConfirmation">
+		<transition on="orderConfirmed" to="processOrder" />
+		<transition on="backToCollectShippingDetail" to="collectShippingDetail" />
+	</view-state>
+	
+	<!-- result="order.orderId" saves result of expression -->
+	<action-state id="processOrder">
+		<evaluate expression="orderServiceImpl.saveOrder(order)" result="order.orderId"/>
+		<transition to="thankCustomer" />
+	</action-state>
+	
+	<view-state id="InvalidCartWarning">
+		<transition to="endState"/>
+	</view-state>
+	
+	<view-state id="thankCustomer" model="order">
+		<transition to="endState"/>
+	</view-state>
+
+	<end-state id="endState"/>	
+
+	<end-state id="cancelCheckout" view = "checkOutCancelled.jsp"/>		
+	
+	<global-transitions>
+		<transition on = "cancel" to="endState" />
+	</global-transitions>
+
+</flow>

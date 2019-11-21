@@ -1,13 +1,13 @@
 var contextRoot = "/" + window.location.pathname.split('/')[1];
 
-var socket = new SockJS(contextRoot+"/gkz-stomp-endpoint");
+var socket = new SockJS(contextRoot+"/offer-stomp-endpoint");
 var stompClient = Stomp.over(socket);
 
 // Callback function[renderPrice] to be called when stomp client is connected to
 // server
 var connectCallback = function() {
-	console.log('***** subscript onconnectCallback:  /topic/offer')
-	stompClient.subscribe('/topic/offer', renderPrice);
+	console.log('***** subscript onconnectCallback:  /offer')
+	stompClient.subscribe('/offer', renderPrice);
 };
 
 
@@ -72,7 +72,7 @@ var subscriptOffer = function(){
 //	var stompClient = Stomp.over(socket);
 	stompClient.connect({}, function(frame) {
 		console.log('*** start subscription <<<')
-		stompClient.subscribe('/topic', function (message) {
+		stompClient.subscribe('/offer', function (message) {
 			console.log("=======================*******==")
 	    	console.log('>>>> web socket recieved : ',message)
 	    	console.log('>>>> web socket body recieved : ', JSON.parse(message.body))

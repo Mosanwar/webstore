@@ -1,5 +1,11 @@
 package edu.mum.emarket.domain;
 
+
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -15,23 +21,39 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "PRODUCT")
-public class Product {
+public class Product implements Serializable {
 
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 
-	@Column(name = "TITLE")
-	private String title;
+	@NotEmpty
+	private String productTitle;
+
+	private long unitsInStock;
+
+	@Column(name = "PRODUCT_ID")
+	private String productId;
 	@Column(name = "DESCRIPTION")
 	private String description;
 	@Column(name = "PRICE")
-	private Double price;
+	private BigDecimal price;
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+
 	@Column(name = "CITY")
 	private String city;
 	@Column(name = "COUNTRY")
@@ -40,6 +62,10 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "CATEGORY_ID")
 	private Category category;
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	@ManyToOne
 	@JoinColumn(name = "USER_ID")
@@ -54,13 +80,22 @@ public class Product {
 	@JsonIgnoreProperties(value = { "product" })
 	private Set<Photo> photos;
 
+	@Transient
+	private MultipartFile productImage;
+	
+	
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
+
 	public Product() {
 	}
 
-	public Product(long id, String title, String description, LocalDate expirDate, Double price, String city,
+	public Product(long id, String title, String description, LocalDate expirDate, BigDecimal price, String city,
 			String country) {
 		this.id = id;
-		this.title = title;
+		this.productTitle = title;
 		this.description = description;
 		this.price = price;
 		this.city = city;
@@ -75,17 +110,22 @@ public class Product {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+
+
+	public String getProductTitle() {
+		return productTitle;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setProductTitle(String productTitle) {
+		this.productTitle = productTitle;
 	}
 
 	public String getDescription() {
 		return description;
 	}
+
+
+
 
 	public void setDescription(String description) {
 		this.description = description;
@@ -139,12 +179,27 @@ public class Product {
 		this.country = country;
 	}
 
-	public Double getPrice() {
-		return price;
+	public MultipartFile getProductImage() {
+		// TODO Auto-generated method stub
+		return productImage;
+	}
+	
+	public long getUnitsInStock() {
+		return unitsInStock;
 	}
 
-	public void setPrice(Double price) {
-		this.price = price;
+	public void setUnitsInStock(long unitsInStock) {
+		this.unitsInStock = unitsInStock;
+	}
+
+
+
+	public String getProductId() {
+		return productId;
+	}
+
+	public void setProductId(String productId) {
+		this.productId = productId;
 	}
 
 }

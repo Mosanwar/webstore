@@ -13,7 +13,7 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script type="text/javascript"
-	src="<spring:url value="/resource/js/offer.js"/>"></script>
+	src="<spring:url value="/resources/js/offer.js"/>"></script>
 </head>
 <body>
 
@@ -27,7 +27,7 @@
 				<li><a href="#">Profile</a></li>
 				<li><a href="#">Add Product</a></li>
 				<li><a href="#">Chart</a></li>
-				<li><a href="#">Admin</a></li>
+				<li><a href="admin">Admin</a></li>
 				<li><a href="offers">Offers</a></li>
 				<li><a style="margin-left: 700px" href="#">Login</a></li>
 			</ul>
@@ -94,7 +94,7 @@
 									<spring:message code="offer.form.selectProduct" />
 								</form:option>
 								<form:options items="${products}" itemValue="id"
-									itemLabel="title" />
+									itemLabel="productTitle" />
 							</form:select>
 							<form:errors path="product" cssClass="text-danger" />
 						</div>

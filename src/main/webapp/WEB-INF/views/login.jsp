@@ -27,7 +27,7 @@
 			  	<div class="panel-body">
 			  	<c:if test="${not empty error}">
 					<div class="alert alert-danger">
-						<spring:message code="AbstractUserDetailsAuthenticationProvider.badCredentials"/><br />
+						<spring:message code="login.credentials.error"/><br />
 					</div>
 				</c:if>
 			    	<form action="<spring:url value="/login"></spring:url>" method="post">

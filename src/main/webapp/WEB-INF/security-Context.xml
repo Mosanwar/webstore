@@ -18,6 +18,7 @@
     <security:http use-expressions="true">
 
         <security:intercept-url pattern="/emp" access="hasRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/emp1" access="hasRole('ROLE_ADMIN')"/>
 
         <security:form-login
                 login-page="/login"
@@ -28,6 +29,7 @@
 
         <security:logout logout-success-url="/logout"
                          delete-cookies="JSESSIONID"/>
+        <security:csrf disabled="true" />
 
     </security:http>
 
@@ -38,20 +40,21 @@
             <security:password-encoder ref="passwordEncoder"/>
             <security:jdbc-user-service
                     data-source-ref="dataSource"
-                    users-by-username-query="select * from person p where p.email=?"
-                    authorities-by-username-query="select u1.email, u2.authority from person u1, authority u2
-				                                                     where u1.email = u2.email and u1.email =?"/>
+                    users-by-username-query="select username,password,enabled from credentials where username=?"
+                    authorities-by-username-query="select u1.username, u2.authority from credentials u1, authority u2
+				                                                     where u1.username = u2.EMAIL and u1.username =?"/>
         </security:authentication-provider>
     </security:authentication-manager>
 
     <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
     </bean>
 
-<!--     <bean id="dataSource" -->
-<!--           class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
-<!--         <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
-<!--         <property name="url" value="jdbc:mysql://localhost:3306/rangers?useSSL=false" /> -->
-<!--         <property name="username" value="root" /> -->
-<!--         <property name="password" value="root@A123" /> -->
-<!--     </bean> -->
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/rangers?useSSL=false" />
+        <property name="username" value="root" />
+        <property name="password" value="Root@A123" />
+    </bean>
 </beans>

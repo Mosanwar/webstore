@@ -51,7 +51,7 @@
 			</div>
 
 			<div class="col-md-5">
-				<h3>${offer.product.title}</h3>
+				<h3>${offer.product.productTitle}</h3>
 				<p><strong><spring:message code="offer.form.description"/>: </strong> ${offer.description}</p>
 				<p><strong><spring:message code="offer.form.newPrice"/>: </strong> ${offer.price} $</p>
 				<p><strong><spring:message code="offer.form.oldPrice"/>: </strong> ${offer.product.price} $</p>

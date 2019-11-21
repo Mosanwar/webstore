@@ -44,6 +44,7 @@
 		<property name="url" value="jdbc:mysql://localhost:3306/rangers?useSSL=false" />
 		<property name="username" value="root" />
 		<property name="password" value="Root@A123" />
+
 	</bean>
 
  

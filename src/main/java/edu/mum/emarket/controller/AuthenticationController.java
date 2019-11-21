@@ -3,11 +3,13 @@ package edu.mum.emarket.controller;
 import edu.mum.emarket.domain.User;
 import edu.mum.emarket.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 public class AuthenticationController {
@@ -32,14 +34,25 @@ public class AuthenticationController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@ModelAttribute User user){
+    public String register(@Valid @ModelAttribute User user, BindingResult result){
+
+        if (result.hasErrors()) {
+            return "/register";
+        }
+
         getUserService().registerUser(user);
         return "redirect:/";
     }
 
-    @RequestMapping("/emp")
+    @RequestMapping("/emp") 
     public String emp(){
+        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return "/home";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(){
+        return "redirect:/home";
     }
 
     //----------------------setters and getters-----------------

@@ -30,27 +30,38 @@
                             <spring:message code="AbstractUserDetailsAuthenticationProvider.badCredentials"/><br />
                         </div>
                     </c:if>
-                    <form action="<spring:url value="/register"></spring:url>" method="post">
+                    <form:form modelAttribute="user" action="register" method="post">
                         <fieldset>
+                            <p>
+<%--                                <form:errors path="*" cssStyle="color : red;" />--%>
+                            </p>
                             <div class="form-group">
-                                <input class="form:input-large" placeholder="Name" name='name' type="text">
+                                <form:input path="name" id="name" cssClass="form:input-large" placeholder="Name" /><br/>
+                                <form:errors path="name" cssStyle="color : red;" />
                             </div>
                             <div class="form-group">
-                                <input class="form:input-large" placeholder="Email" name='email' type="text">
+                                <form:input path="email" id="email" cssClass="form:input-large" placeholder="Email" /><br/>
+                                <form:errors path="email" cssStyle="color : red;" />
                             </div>
                             <div class="form-group">
-                                <input class=" form:input-large" placeholder="Password" name='password'  type="password" value="">
+                                <form:password path="password" id="password" cssClass="form:input-large" placeholder="Password" /><br/>
+                                <form:errors path="password" cssStyle="color : red;" />
+                            </div>
+<%--                            <span style="text-align: center;">
+                                <form:errors path="password" cssStyle="color : red;" />
+                            </span>--%>
+                            <div class="form-group">
+                                <form:input path="phone" id="phone" cssClass="form:input-large" placeholder="Phone" /><br/>
+                                <form:errors path="phone" cssStyle="color : red;" />
                             </div>
                             <div class="form-group">
-                                <input class="form:input-large" placeholder="Phone" name='phone' type="text">
-                            </div>
-                            <div class="form-group">
-                                <input class="form:input-large" placeholder="Address" name='address' type="text">
+                                <form:input path="address" id="address" cssClass="form:input-large" placeholder="Address" /><br/>
+                                <form:errors path="address" cssStyle="color : red;" />
                             </div>
                             <input class="btn btn-lg btn-success btn-mini" type="submit" value="Register">
                         </fieldset>
                         <security:csrfInput />
-                    </form>
+                    </form:form>
                 </div>
             </div>
         </div>

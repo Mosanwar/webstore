@@ -14,9 +14,9 @@
 
   <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script type="text/javascript"
-	src="<spring:url value="/resource/js/stomp.js"/>"></script>
+	src="<spring:url value="/resources/js/stomp.js"/>"></script>
 	<script type="text/javascript"
-	src="<spring:url value="/resource/js/offerSocket.js"/>"></script>
+	src="<spring:url value="/resources/js/offerSocket.js"/>"></script>
 	
 <title>Offers</title>
 </head>
@@ -36,7 +36,17 @@
 				<li><a style="margin-left: 700px" href="#">Login</a></li>
 			</ul>
 		</div>
-	</nav>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="#">Profile</a></li>
+			<li><a href="#">Add Product</a></li>
+			<li><a href="#">Chart</a></li>
+			<li><a href="admin">Admin</a></li>
+			<li><a href="offers">Offers</a></li>
+			<li><a style="margin-left: 700px" href="#">Login</a></li>
+		</ul>
+	</div>
+</nav>
 
 	<nav class="navbar navbar-light bg-light">
 		<a class="navbar-brand" href="offers"><spring:message
