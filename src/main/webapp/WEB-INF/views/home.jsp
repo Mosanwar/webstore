@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
@@ -15,13 +16,25 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="<spring:url value="/" />">Home</a></li>
-			<li><a href="#">Profile</a></li>
-			<li><a href="#">Add Product</a></li>
-			<li><a href="admin">Admin</a></li>
-			<li><a href="<spring:url value="/product" />">Chart</a></li>
+			<security:authorize access="isAuthenticated()">
+                <li><a href="profile">Profile</a></li>
+			</security:authorize>
+			<security:authorize access="isAuthenticated()">
+				<li><a href="#">Add Product</a></li>
+			</security:authorize>
+			<security:authorize access="hasRole('ROLE_ADMIN')">
+				<li><a href="admin">Admin</a></li>
+			</security:authorize>
+			<security:authorize access="isAuthenticated()">
+				<li><a href="<spring:url value="/product" />">Chart</a></li>
+			</security:authorize>
 			<li><a href="offers">Offers</a></li>
-			<li><a href="#">Admin</a></li>
-			<li><a style="margin-left: 700px" href="<spring:url value="/login" />">Login</a></li>
+			<security:authorize access="isAnonymous()">
+				<li><a style="margin-left: 700px" href="<spring:url value="/login" />">Login</a></li>
+			</security:authorize>
+			<security:authorize access="isAuthenticated()">
+				<li>Logged in by: <security:authentication property="principal.username" /></li>
+			</security:authorize>
 		</ul>
 	</div>
 </nav>
