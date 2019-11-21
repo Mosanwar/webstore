@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import edu.mum.emarket.service.*;
@@ -31,7 +32,8 @@ public class HomeController {
 
 	@RequestMapping(value = {"/","/home"},method = RequestMethod.GET)
 	public String home(Model model) {
-		model.addAttribute("products", productService.getAllProducts());
+		List<Product> products = productService.getAllProducts();
+		model.addAttribute("products", products);
 
 //		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //		if(checkRole(principal, "USER_ROLE")){

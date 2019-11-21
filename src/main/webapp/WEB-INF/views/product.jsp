@@ -7,10 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script type="text/javascript"
-	src="<spring:url value="/resource/js/cart.js"/>"></script>
+
 
 <title>Products</title>
 </head>
@@ -50,7 +47,7 @@
 			<div class="col-md-5">
 
 				<img
-					src="<c:url value="/resource/images/${product.productId}.png"></c:url>"
+					src="<c:url value="${product.photo}"></c:url>"
 					alt="image" style="width: 100%" />
 			</div>
 
@@ -65,12 +62,8 @@
 
 				<h4>${product.price}USD</h4>
 				<p>
-					<a href="#" class="btn btn-warning btn-large"
-						onclick="addToCart('${product.productId}')"> <span
-						class="glyphicon-shopping-cart glyphicon"></span> Order Now
-					</a> <a href="<spring:url value="/cart" />" class="btn btn-default">
-						<span class="glyphicon-hand-right glyphicon"></span> View Cart
-					</a> <a href="<spring:url value="/products" />" class="btn btn-default">
+					 
+					</a> <a href="<spring:url value="/" />" class="btn btn-default">
 						<span class="glyphicon-hand-left glyphicon"></span> back
 					</a>
 

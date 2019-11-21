@@ -89,7 +89,7 @@
 				<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
 					<div class="thumbnail">
 						<img
-							src="<c:url value="/resource/images/${offer.product.id}.png"></c:url>"
+							src="<c:url value="${offer.product.photo }"></c:url>"
 							alt="image" style="width: 100%" />
 						<div class="caption">
 							<h3>${offer.price}</h3>

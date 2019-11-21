@@ -61,7 +61,7 @@
 		<div class="row">
 			<div class="col-md-5">
 				<img
-					src="<c:url value="/resource/images/${offer.product.id}.png"></c:url>"
+					src="<c:url value="${offer.product.photo }"></c:url>"
 					alt="image" style="width: 100%" />
 			</div>
 
