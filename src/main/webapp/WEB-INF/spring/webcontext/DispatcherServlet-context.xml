@@ -68,7 +68,6 @@
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10240000" />
-		<!--property name="restrictFileTypes" value="pdf"/ -->
 	</bean>
 
 	<bean id="messageSource"
@@ -80,11 +79,6 @@
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
 		<property name="defaultLocale" value="en" />
 	</bean>
-
-	<!-- <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"> 
-		<property name="basenames" value="classpath:messages,classpath:errorMessages" 
-		/> </bean> -->
-
 	<mvc:resources location="/resources/"
 		mapping="/resources/**" />
 
