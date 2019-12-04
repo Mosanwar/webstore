@@ -5,6 +5,7 @@ import edu.mum.emarket.exception.InvalidCartException;
 import edu.mum.emarket.repository.CartRepository;
 import edu.mum.emarket.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,6 +19,7 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
+	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 	public Cart read(String cartId) {
 		return cartRepository.findOne(cartId);
 	}

@@ -9,6 +9,7 @@ import edu.mum.emarket.repository.UserRepository;
 import edu.mum.emarket.service.AuthorityService;
 import edu.mum.emarket.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private AdminRepository adminRepository;
 
+    private static final String ROLE = "ROLE_USER";
+
     @Override
+    @PreAuthorize("isAnonymous()")
     public User registerUser(User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encodedPassword = encoder.encode(user.getPassword());
@@ -40,7 +44,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(encodedPassword);
         user = getUserRepository().save(user);
 
-        getAuthorityService().saveAuthority("ROLE_USER", user.getEmail());
+        getAuthorityService().saveAuthority(ROLE, user.getEmail());
         return user;
     }
 

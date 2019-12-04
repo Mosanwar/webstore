@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import edu.mum.emarket.domain.Product;
@@ -19,6 +20,7 @@ public class ProductServiceImpl implements ProductService {
 	private ProductRepository productRepository;
 
 	@Override
+	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 	public Product addProduct(Product product) {
 		// TODO Auto-generated method stub
 		return productRepository.save(product);
@@ -42,6 +44,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	@PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 	public Product editProduct(Product p) {
 		// TODO Auto-generated method stub
 		return productRepository.save(p);

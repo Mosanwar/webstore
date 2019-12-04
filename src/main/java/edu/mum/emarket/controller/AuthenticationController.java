@@ -44,17 +44,6 @@ public class AuthenticationController {
         return "redirect:/login";
     }
 
-    @RequestMapping("/emp") 
-    public String emp(){
-        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return "/home";
-    }
-
-    @RequestMapping("/logout")
-    public String logout(){
-        return "redirect:/home";
-    }
-
     //----------------------setters and getters-----------------
 
     public UserService getUserService() {

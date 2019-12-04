@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
@@ -9,13 +10,39 @@
 <title>Products</title>
 </head>
 <body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Rangers Webstore</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="<spring:url value="/" />">Home</a></li>
+
+			<security:authorize access="isAuthenticated()">
+				<li><a href="profile">Profile</a></li>
+			</security:authorize>
+			<security:authorize access="isAuthenticated()">
+				<li><a href="<spring:url value="addProduct" />">Add Product</a></li>
+			</security:authorize>
+			<security:authorize access="hasRole('ROLE_ADMIN')">
+				<li><a href="<spring:url value="admin" />">Admin</a></li>
+			</security:authorize>
+			<li><a href="offers">Offers</a></li>
+			<security:authorize access="isAnonymous()">
+				<li><a style="margin-left: 700px" href="<spring:url value="/login" />">Login</a></li>
+			</security:authorize>
+			<security:authorize access="isAuthenticated()">
+				<li><a style="margin-left: 700px" href="<spring:url value="/logout" />">Logout</a></li>
+			</security:authorize>
+		</ul>
+	</div>
+</nav>
 	<section>
 		<div class="jumbotron">
 			<div class="container">
 				<h1>Products</h1>
 				<p>Add products</p>
 			</div>
-			<a href="<c:url value="/j_spring_security_logout" />" class="btn btn-danger btn-mini pull-right">logout</a>	
 			<div class="pull-right" style="padding-right:50px">
 				<a href="?language=en" >English</a>|<a href="?language=fr" >French</a>					
 			</div>
@@ -64,12 +91,12 @@
 
 				
 
-				<div class="form-group">
-					<label class="control-label col-lg-2" for="category">Category</label>
-					<div class="col-lg-10">
-					<form:select path="category" id="category.id" items="${categories}" itemValue="id" itemLabel="name" />
-					</div>
-				</div>
+<%--				<div class="form-group">--%>
+<%--					<label class="control-label col-lg-2" for="category">Category</label>--%>
+<%--					<div class="col-lg-10">--%>
+<%--					<form:select path="category" id="category.id" items="${categories}" itemValue="id" itemLabel="name" />--%>
+<%--					</div>--%>
+<%--				</div>--%>
 
 			
 

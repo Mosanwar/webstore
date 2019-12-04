@@ -9,6 +9,7 @@ import edu.mum.emarket.service.CartService;
 import edu.mum.emarket.service.OrderService;
 import edu.mum.emarket.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -34,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private ShippingRepository shippingRepository;
 
-	
+	@PreAuthorize("hasAnyRole('ROLE_USER')")
 	public void processOrder(String productId, long quantity) {
 		Product productById = productRepository.getProductByProductId(productId);
 		
